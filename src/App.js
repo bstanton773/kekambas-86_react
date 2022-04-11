@@ -1,14 +1,27 @@
 import React, { Component } from 'react';
 import Button from './components/Button';
 import Nav from "./components/Nav";
+import RacerTable from './views/RacerTable';
 
 
 export default class App extends Component{
     constructor(props){
         super(props);
         this.state = {
-            count: 0
+            count: 0,
+            racers: []
         }
+    }
+
+    componentDidMount(){
+        console.log('App mounted')
+        fetch('https://ergast.com/api/f1/2010/10/driverStandings.json')
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                let racers = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+                this.setState({racers})
+            })
     }
 
     handleButtonClick = (step) => {
@@ -30,7 +43,7 @@ export default class App extends Component{
                     <div className='d-flex justify-content-around'>
                         {myButtonSteps.map((step, i) => <Button key={i} step={step} handleClick={this.handleButtonClick} />)}
                     </div>
-                    {this.state.racers.map(num => <h2 key={num}>{num}</h2>)}
+                    <RacerTable racers={this.state.racers}/>
                 </div>
             </>
         )
