@@ -7,6 +7,7 @@ export default class Kekambas extends Component {
             myPeeps: []
         }
         this.getKekambas = this.getKekambas.bind(this);
+        this.clearKekambas = this.clearKekambas.bind(this);
     }
 
     // componentDidMount(){
@@ -28,15 +29,21 @@ export default class Kekambas extends Component {
             })
     }
 
+    clearKekambas(){
+        this.setState({myPeeps:[]})
+    }
+
 
     render() {
-        return (
+        return  (
             <div>
                 <h4 className='text-center'>My Peeps</h4>
                 <button className='btn btn-success' onClick={this.getKekambas}>Get My Peeps</button>
-                <ul className='list-group'>
+                <button className='btn btn-danger' onClick={this.clearKekambas}>Clear My Peeps</button>
+                { this.state.myPeeps.length > 0 ? (<ul className='list-group'>
                     {this.state.myPeeps.map((k, i) => <li className="list-group-item" key={i}>{k.first_name} {k.last_name}</li>)}
-                </ul>
+                </ul>) : null}
+                
             </div>
         )
     }
