@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from './components/Button';
 import Nav from "./components/Nav";
+import Kekambas from './views/Kekambas';
 import RacerTable from './views/RacerTable';
 
 
@@ -43,7 +44,8 @@ export default class App extends Component{
                     <div className='d-flex justify-content-around'>
                         {myButtonSteps.map((step, i) => <Button key={i} step={step} handleClick={this.handleButtonClick} />)}
                     </div>
-                    <RacerTable racers={this.state.racers}/>
+                    {/* <RacerTable racers={this.state.racers}/> */}
+                    <Kekambas />
                 </div>
             </>
         )
