@@ -10,7 +10,8 @@ export default class App extends Component{
         super(props);
         this.state = {
             count: 0,
-            racers: []
+            racers: [],
+            name: null
         }
     }
 
@@ -30,6 +31,10 @@ export default class App extends Component{
         })
     }
 
+    handleNameChange = (name) => {
+        this.setState({name})
+    }
+
     render(){
 
         return (
@@ -37,7 +42,12 @@ export default class App extends Component{
                 <Nav />
                 <div className='container'>
                     <Routes>
-                        <Route path='/' element={<Home handleClick={this.handleButtonClick} count={this.state.count} />} />
+                        <Route path='/' element={<Home 
+                                                    handleClick={this.handleButtonClick} 
+                                                    count={this.state.count} 
+                                                    name={this.state.name}
+                                                    handleNameChange={this.handleNameChange}
+                                                />} />
                         <Route path='racers' element={<RacerTable racers={this.state.racers}/>} />
                     </Routes>
                 </div>
