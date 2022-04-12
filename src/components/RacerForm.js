@@ -2,7 +2,7 @@ import React from 'react';
 
 const RacerForm = (props) => {
     return (
-        <form>
+        <form onSubmit={props.handleForm}>
             <div className='row'>
                 <div className='col-12 col-md-6'>
                     <input type='text' className='form-control' name='season' placeholder='Season' />

@@ -3,23 +3,34 @@ import RacerRow from '../components/RacerRow';
 import RacerForm from '../components/RacerForm';
 
 export default function RacerTable(props){
-    const [racers, setRacers] = useState([])
+    const [racers, setRacers] = useState([]);
+    const [season, setSeason] = useState(2021);
+    const [round, setRound] = useState(1)
 
     useEffect(() => {
         console.log("Use Effect")
-        fetch('https://ergast.com/api/f1/2010/10/driverStandings.json')
+        fetch(`https://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
             .then(res => res.json())
             .then(data => {
                 let racers = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
                 setRacers(racers)
             })
-    }, [])
+    }, [season, round])
+
+    const handleForm = (e) => {
+        e.preventDefault();
+        const newSeason = e.target.season.value;
+        const newRound = e.target.round.value;
+        setSeason(newSeason);
+        setRound(newRound);
+    }
 
 
     return (
         <>
             <h1 className='text-center mt-5'>Driver Standings</h1>
-            <RacerForm />
+            <RacerForm handleForm={handleForm}/>
+            <h4 className='text-center my-2'>Season: {season} Round: {round}</h4>
             <table className='table'>
                 <thead>
                     <tr>
