@@ -2,6 +2,22 @@ import React, { Component } from 'react'
 import RacerRow from '../components/RacerRow'
 
 export default class RacerTable extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            racers: []
+        }
+    }
+
+    componentDidMount(){
+        fetch('https://ergast.com/api/f1/2010/10/driverStandings.json')
+            .then(res => res.json())
+            .then(data => {
+                let racers = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+                this.setState({racers})
+            })
+    }
+
     render() {
         return (
             <>
@@ -19,7 +35,7 @@ export default class RacerTable extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.racers.map((racer, idx) => <RacerRow racer={racer} key={idx} />)}
+                        {this.state.racers.map((racer, idx) => <RacerRow racer={racer} key={idx} />)}
                     </tbody>
                 </table>
             </>

@@ -10,19 +10,10 @@ export default class App extends Component{
         super(props);
         this.state = {
             count: 0,
-            racers: [],
             name: null
         }
     }
 
-    componentDidMount(){
-        fetch('https://ergast.com/api/f1/2010/10/driverStandings.json')
-            .then(res => res.json())
-            .then(data => {
-                let racers = data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-                this.setState({racers})
-            })
-    }
 
     handleButtonClick = (step) => {
         let newCount = this.state.count + step;
@@ -48,7 +39,7 @@ export default class App extends Component{
                                                     name={this.state.name}
                                                     handleNameChange={this.handleNameChange}
                                                 />} />
-                        <Route path='racers' element={<RacerTable racers={this.state.racers}/>} />
+                        <Route path='racers' element={<RacerTable />} />
                     </Routes>
                 </div>
             </>
