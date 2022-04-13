@@ -3,6 +3,7 @@ import Button from './components/Button';
 import Nav from "./components/Nav";
 import Kekambas from './views/Kekambas';
 import RacerTable from './views/RacerTable';
+import { Routes, Route } from 'react-router-dom';
 
 
 export default class App extends Component{
@@ -45,7 +46,9 @@ export default class App extends Component{
                         {myButtonSteps.map((step, i) => <Button key={i} step={step} handleClick={this.handleButtonClick} />)}
                     </div>
                     {/* <RacerTable racers={this.state.racers}/> */}
-                    <Kekambas />
+                    <Routes>
+                        <Route path='/kekambas' element={<Kekambas />} />
+                    </Routes>
                 </div>
             </>
         )
