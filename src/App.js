@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from './components/Button';
 import Nav from "./components/Nav";
 import Kekambas from './views/Kekambas';
+import Posts from './views/Posts';
 import RacerTable from './views/RacerTable';
 import { Routes, Route } from 'react-router-dom';
 
@@ -48,6 +49,7 @@ export default class App extends Component{
                     {/* <RacerTable racers={this.state.racers}/> */}
                     <Routes>
                         <Route path='/kekambas' element={<Kekambas />} />
+                        <Route path='/posts' element={<Posts />} />
                     </Routes>
                 </div>
             </>
