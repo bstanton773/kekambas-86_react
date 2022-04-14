@@ -13,6 +13,7 @@ export default function Nav(props) {
             <div className="navbar-nav">
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/racers">Racers</Link>
+                <Link className="nav-link" to="/blog">Blog</Link>
                 { props.loggedIn ? (
                 <>
                 <Link className="nav-link" to="/" onClick={props.logUserOut}>Logout</Link>
