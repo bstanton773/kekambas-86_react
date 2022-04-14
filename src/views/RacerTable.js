@@ -8,7 +8,6 @@ export default function RacerTable(props){
     const [round, setRound] = useState(1)
 
     useEffect(() => {
-        console.log("Use Effect")
         fetch(`https://ergast.com/api/f1/${season}/${round}/driverStandings.json`)
             .then(res => res.json())
             .then(data => {

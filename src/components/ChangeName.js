@@ -31,7 +31,6 @@ import React, { useState } from 'react';
 
 export default function ChangeName(props) {
     const [buttonColor, setButtonColor] = useState('secondary')
-    console.log(props)
     const handleFormSubmit = (e) => {
         e.preventDefault();
         const newName = e.target.newName.value;
