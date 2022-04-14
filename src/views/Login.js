@@ -26,8 +26,9 @@ export default class Login extends Component {
             this.props.flashMessage('Your username/password is incorrect', 'danger')
         } else{
             let token = await data.token
-            localStorage.setItem('token', token)
-            this.props.flashMessage('You have successfully logged in', 'success')
+            localStorage.setItem('token', token);
+            this.props.flashMessage('You have successfully logged in', 'success');
+            this.props.login();
             this.setState({redirect: '/'})
         }
     }
