@@ -13,7 +13,7 @@ export default function Nav() {
             <div className="navbar-nav">
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/racers">Racers</Link>
-                <Link className="nav-link" to="/test">Test</Link>
+                <Link className="nav-link" to="/register">Register</Link>
             </div>
             </div>
         </div>
