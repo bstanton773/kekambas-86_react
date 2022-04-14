@@ -8,6 +8,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import RacerTable from './views/RacerTable';
 import Register from './views/Register';
+import SinglePost from './views/SinglePost';
 
 
 export default class App extends Component{
@@ -69,6 +70,7 @@ export default class App extends Component{
                         <Route path='login' element={<Login flashMessage={this.flashMessage} login={this.login}/>} />
                         <Route path='blog' element={<Blog loggedIn={this.state.loggedIn} />} />
                         <Route path='create-post' element={<CreatePost flashMessage={this.flashMessage} loggedIn={this.state.loggedIn}/>} />
+                        <Route path='blog/:postId' element={<SinglePost />} />
                     </Routes>
                 </div>
             </>
