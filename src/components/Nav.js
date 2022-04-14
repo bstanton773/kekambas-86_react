@@ -15,9 +15,10 @@ export default function Nav(props) {
                 <Link className="nav-link" to="/racers">Racers</Link>
                 <Link className="nav-link" to="/blog">Blog</Link>
                 { props.loggedIn ? (
-                <>
-                <Link className="nav-link" to="/" onClick={props.logUserOut}>Logout</Link>
-                </>
+                  <>
+                  <Link className="nav-link" to="/create-post">Create a Post</Link>
+                  <Link className="nav-link" to="/" onClick={props.logUserOut}>Logout</Link>
+                  </>
                 ) : (
                 <>
                 <Link className="nav-link" to="/register">Register</Link>
