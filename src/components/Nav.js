@@ -14,6 +14,7 @@ export default function Nav() {
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/racers">Racers</Link>
                 <Link className="nav-link" to="/register">Register</Link>
+                <Link className="nav-link" to="/login">Login</Link>
             </div>
             </div>
         </div>
