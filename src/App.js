@@ -40,11 +40,19 @@ export default class App extends Component{
         this.setState({loggedIn: true})
     }
 
+    logout = () => {
+        localStorage.removeItem('token');
+        this.flashMessage('You have successfully logged out', 'secondary');
+        this.setState({
+            loggedIn: false
+        })
+    }
+
     render(){
 
         return (
             <>
-                <Nav loggedIn={this.state.loggedIn}/>
+                <Nav loggedIn={this.state.loggedIn} logUserOut={this.logout} />
                 <div className='container'>
                     {this.state.message ? <AlertMessage category={this.state.category} message={this.state.message} flashMessage={this.flashMessage}/> : null}
                     <Routes>
