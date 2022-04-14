@@ -4,12 +4,15 @@ import { useNavigate } from 'react-router-dom';
 export default function CreatePost(props) {
     let navigate = useNavigate();
 
+    const { loggedIn } = props;
+    const { flashMessage } = props;
+
     useEffect(() => {
-        if (!props.loggedIn){
-            props.flashMessage('You must be logged in to create a post', 'danger')
+        if (!loggedIn){
+            flashMessage('You must be logged in to create a post', 'danger')
             navigate('/login')
         }
-    }, [props.loggedIn])
+    }, [loggedIn, flashMessage, navigate])
 
     const handleSubmit = (e) => {
         e.preventDefault();

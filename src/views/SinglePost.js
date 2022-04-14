@@ -11,7 +11,7 @@ export default function SinglePost(props) {
         fetch(`http://localhost:5000/api/posts/${postId}`)
             .then(res => res.json())
             .then(data => setPost(data))
-    }, [])
+    }, [postId])
 
     const handleEditSubmit = (e) => {
         e.preventDefault();
