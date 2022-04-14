@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-export default function Register() {
+export default function Register(props) {
     let navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -11,7 +11,7 @@ export default function Register() {
         let password = e.target.password.value;
         let confirmPass = e.target.confirmPass.value;
         if (password !== confirmPass){
-            console.log("Hey these passwords don't match you silly goose!")
+            props.flashMessage("Hey these passwords don't match you silly goose!", "warning")
             // navigate('/register')
         } else {
             // Set up our request to the flask api
@@ -30,8 +30,12 @@ export default function Register() {
                 body: data
             }).then(res => res.json())
                 .then(data => {
-                    console.log(data)
-                    navigate('/')
+                    if (data.error){
+                        props.flashMessage(data.error, 'danger')
+                    } else {
+                        props.flashMessage(`${data.username} has registered.`, 'success')
+                        navigate('/')
+                    }
                 })
         }
     }

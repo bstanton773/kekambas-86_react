@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import AlertMessage from './components/AlertMessage';
 import Nav from "./components/Nav";
 import Home from './views/Home';
 import RacerTable from './views/RacerTable';
@@ -11,7 +12,9 @@ export default class App extends Component{
         super(props);
         this.state = {
             count: 0,
-            name: null
+            name: null,
+            message: null,
+            category: null
         }
     }
 
@@ -27,12 +30,17 @@ export default class App extends Component{
         this.setState({name})
     }
 
+    flashMessage = (message, category) => {
+        this.setState({message,category})
+    }
+
     render(){
 
         return (
             <>
                 <Nav />
                 <div className='container'>
+                    {this.state.message ? <AlertMessage category={this.state.category} message={this.state.message} flashMessage={this.flashMessage}/> : null}
                     <Routes>
                         <Route path='/' element={<Home 
                                                     handleClick={this.handleButtonClick} 
@@ -41,7 +49,7 @@ export default class App extends Component{
                                                     handleNameChange={this.handleNameChange}
                                                 />} />
                         <Route path='racers' element={<RacerTable />} />
-                        <Route path='register' element={<Register />} />
+                        <Route path='register' element={<Register flashMessage={this.flashMessage} />} />
                     </Routes>
                 </div>
             </>
